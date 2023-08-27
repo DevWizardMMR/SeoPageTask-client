@@ -13,22 +13,22 @@ function App() {
   const [loadData, setLoadData] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/getincomplete")
+    fetch("https://seotaskdhaka.vercel.app/getincomplete")
       .then((res) => res.json())
       .then((data) => setIncompleted(data));
-    fetch("http://localhost:5000/getcompleted")
+    fetch("https://seotaskdhaka.vercel.app/getcompleted")
       .then((res) => res.json())
       .then((data) => setcompleted(data));
-    fetch("http://localhost:5000/getdoing")
+    fetch("https://seotaskdhaka.vercel.app/getdoing")
       .then((res) => res.json())
       .then((data) => setDoing(data));
-    fetch("http://localhost:5000/getoverday")
+    fetch("https://seotaskdhaka.vercel.app/getoverday")
       .then((res) => res.json())
       .then((data) => setoverday(data));
-    fetch("http://localhost:5000/gettodo")
+    fetch("https://seotaskdhaka.vercel.app/gettodo")
       .then((res) => res.json())
       .then((data) => settodo(data));
-    fetch("http://localhost:5000/getunderReview")
+    fetch("https://seotaskdhaka.vercel.app/getunderReview")
       .then((res) => res.json())
       .then((data) => setunderReview(data));
   }, [loadData]);
@@ -51,7 +51,7 @@ function App() {
     const Modaldata = { ...ModalData, name, message, file };
     console.log(Modaldata);
 
-    fetch("http://localhost:5000/modaldatapost",{
+    fetch("https://seotaskdhaka.vercel.app/modaldatapost",{
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(Modaldata)
