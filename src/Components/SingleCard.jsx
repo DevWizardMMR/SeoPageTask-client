@@ -1,6 +1,6 @@
 import React from "react";
 import { BsDatabaseFill } from "react-icons/bs";
-import { LuMessagesSquare, LuCalendarDays, LuPaperclip } from "react-icons/lu";
+import { LuMessagesSquare, LuCalendarDays, LuPaperclip,LuChurch } from "react-icons/lu";
 
 const SingleCard = ({ card, SetModalData, tittle }) => {
   const openmodal = (id, tittle) => {
@@ -40,7 +40,8 @@ const SingleCard = ({ card, SetModalData, tittle }) => {
           <p>
             <BsDatabaseFill className="inline-block text-xs font-thin" /> {card?.details}
           </p>
-          <span className="px-2 py-1 bg-base-300 rounded-md">
+          <span className="px-2 py-1 bg-base-300 rounded-md flex justify-between items-center gap-2">
+            <LuChurch/>
             {card?.count}
           </span>
         </div>

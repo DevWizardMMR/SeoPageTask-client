@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SingleCard from "./Components/SingleCard";
+import Swal from "sweetalert2";
 
 function App() {
   const [ModalData, setModalData] = useState(null);
@@ -38,18 +39,40 @@ function App() {
     const message = event.target.message.value;
     const file = event.target.file.value;
     if (!name || !message || !file) {
-      alert("Fill up all input first!");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Fill all input first!',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return;
     }
     const Modaldata = { ...ModalData, name, message, file };
     console.log(Modaldata);
 
-    fetch("http://localhost:5000/getincomplete",{
+    fetch("http://localhost:5000/modaldatapost",{
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(Modaldata)
       }).then(res=> res.json()).then(data => {
-        
+       if(data.modifiedCount){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+       }else{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something went wrong try again',
+          showConfirmButton: false,
+          timer: 1500
+        });
+       }
         setLoadData(!loadData);
       });
 
