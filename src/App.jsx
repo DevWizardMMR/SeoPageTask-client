@@ -45,7 +45,7 @@ function App() {
         title: 'Fill all input first!',
         showConfirmButton: false,
         timer: 1500
-      })
+      });
       return;
     }
     const Modaldata = { ...ModalData, name, message, file };
